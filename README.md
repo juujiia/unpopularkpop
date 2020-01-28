@@ -1,4 +1,4 @@
-# communityparams bot
+# unpopularkpop bot
 
 Lets users vote on submissions with the parameters 'insane', 'not insane' and 'fake'.
 Acts after the voting is over which is most voted and acts accordingly.
