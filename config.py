@@ -2,7 +2,7 @@ id = 'J_5P_arlut5Vcw'
 secret = 'jwpNi1Yvx8gzt-_56uT8E1wvK-0' 	
 username = 'unpopularkpop_mod'
 password = 'unpopularkpop2019'
-user_agent = 'insane/0.2 by Mandjevant' # user agent
+user_agent = 'unpopularkpop_mod' # user agent
 
 sub = 'unpopularkpopopinions' 
 
