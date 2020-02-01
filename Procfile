@@ -1,1 +1,1 @@
-worker: config.py
+worker: communityparamsv2.py
