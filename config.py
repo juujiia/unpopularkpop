@@ -6,7 +6,7 @@ user_agent = 'unpopularkpop_mod' # user agent
 
 sub = 'unpopularkpopopinions' 
 
-initial_comment = "Is this a **Popular** or **Unpopular** opinion? \n Please reply to this comment with either 'popular' or 'unpopular'. If you reply **anywhere else** in the thread, your vote will **not** be counted."
+initial_comment = "Is this a **Popular** or **Unpopular** opinion or just **Hate**? \n Please reply to this comment with either 'popular' or 'unpopular' or 'hate'. If you reply **anywhere else** in the thread, your vote will **not** be counted."
 final_comment = "Voting has concluded. \n This vote was deemed; "
 footer = "\n\n\n\n\n\n^I ^am ^a ^bot ^for ^r/unpopularkpopopinions. ^Please ^send ^me ^a ^message ^if ^you ^have ^any ^feedback ^or ^if ^I ^misbehave."
 removal_type = 'public' # One of ‘public’, ‘private’, ‘private_exposed’. ‘public’ leaves a stickied comment on the post. ‘private’ sends a Modmail message with hidden username. ‘private_exposed’ sends a Modmail message without hidden username
