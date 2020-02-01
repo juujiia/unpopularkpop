@@ -149,19 +149,19 @@ class bot:
 
 
 	# updates comment
-	def update_comment(self, comment_id, insane, notinsane, fake, explan):
+	def update_comment(self, comment_id, popular, unpopular, hate, explan):
 		if explan == 'False':
 			try:
-				#self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Insane | Not insane | Fake |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(insane, notinsane, fake) + config.footer)
-				self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Insane | Not insane | Fake |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(insane, notinsane, fake) + '\n\n Hey OP, if you provide further information in a comment, make sure to start your comment with !explanation. \n' + config.footer)
+				#self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Popular | Unpopular | Hate |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(popular, unpopular, hate) + config.footer)
+				self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Popular | Unpopular | Hate |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(popular, unpopular, hate) + '\n\n Hey OP, if you provide further information in a comment, make sure to start your comment with !explanation. \n' + config.footer)
 			except Exception as e:
 				print(e)
 				pass
 		else:
 			try:
 				foot = "\n\n\n\n\n\nOP has provided further information [in this comment]({0}).".format(explan)
-				self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Insane | Not insane | Fake |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(insane, notinsane, fake) + foot)
-				#self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Insane | Not insane | Fake |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(insane, notinsane, fake) + '\n\n Hey OP, if you provide further information in a comment, make sure to start your comment with !explanation. \n' + config.footer)
+				self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Popular | Unpopular | Hate |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(popular, unpopular, hate) + foot)
+				#self.reddit.comment(str(comment_id)).edit(config.initial_comment + "\n\n # Votes \n\n| Popular | Unpopular | Hate |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(popular, unpopular, hate) + '\n\n Hey OP, if you provide further information in a comment, make sure to start your comment with !explanation. \n' + config.footer)
 			except Exception as e:
 				print(e)
 				pass
@@ -177,34 +177,34 @@ class bot:
 
 
 	# last update comment
-	def last_update_comment(self, comment_id, insane, notinsane, fake, explan):
-		insane = int(insane)
-		notinsane = int(notinsane)
-		fake = int(fake)
+	def last_update_comment(self, comment_id, popular, unpopular, hate, explan):
+		popular = int(popular)
+		unpopular = int(unpopular)
+		hate = int(hate)
 
-		if insane > notinsane and insane > fake:
-			winner = 'insane'
-			winner_count = str(insane)
-		elif fake > notinsane and fake > insane:
-			winner = 'fake'
-			winner_count = str(fake)
-		elif notinsane > insane and notinsane > fake:
-			winner = 'not insane'
-			winner_count = str(notinsane)
+		if popular > unpopular and popular > hate:
+			winner = 'popular'
+			winner_count = str(popular)
+		elif hate > unpopular and hate > popular:
+			winner = 'hate'
+			winner_count = str(hate)
+		elif unpopular > popular and unpopular > hate:
+			winner = 'unpopular'
+			winner_count = str(unpopular)
 		else:
-			winner = 'insane'
-			winner_count = str(insane)
+			winner = 'popular'
+			winner_count = str(popular)
 
 		if explan == 'False':
 			try:
-				self.reddit.comment(str(comment_id)).edit(config.final_comment + winner + " with " + str(winner_count) + " votes \n\n # Votes \n\n| Insane | Not insane | Fake |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(insane, notinsane, fake) + config.footer)
+				self.reddit.comment(str(comment_id)).edit(config.final_comment + winner + " with " + str(winner_count) + " votes \n\n # Votes \n\n| Popular | Unpopular | Hate |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(popular, unpopular, hate) + config.footer)
 			except Exception as e:
 				print(e)
 				pass
 		else:
 			try:
 				foot = "\n\n\n\n\n\nOP has provided further information [in this comment]({0}).".format(explan)
-				self.reddit.comment(str(comment_id)).edit(config.final_comment + winner + " with " + str(winner_count) + " votes \n\n # Votes \n\n| Insane | Not insane | Fake |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(insane, notinsane, fake) + foot)
+				self.reddit.comment(str(comment_id)).edit(config.final_comment + winner + " with " + str(winner_count) + " votes \n\n # Votes \n\n| Popular | Unpopular | Hate |\n| --- | --- | --- |\n| {0} | {1} | {2} |".format(popular, unpopular, hate) + foot)
 			except Exception as e:
 				print(e)
 				pass
@@ -241,35 +241,35 @@ class bot:
 		low_body = body.lower()
 
 		if re.match("i\s*n\s*s\s*a\s*n\s*e", low_body):
-			return 'insane'
+			return 'popular'
 		elif re.match("\s*n\s*o\s*t\s*i\s*n\s*s\s*a\s*n\s*e", low_body):
-			return 'not insane'
+			return 'unpopular'
 		elif re.match("\s*f\s*a\s*k\s*e", low_body):
-			return 'fake'
+			return 'hate'
 		else:
 			return None
 
 
 	# act on votes 
-	def act_on_votes(self, insane, notinsane, fake, submission):
-		insane = int(insane)
-		notinsane = int(notinsane)
-		fake = int(fake)
+	def act_on_votes(self, popular, unpopular, hate, submission):
+		popular = int(popular)
+		unpopular = int(unpopular)
+		hate = int(hate)
 
-		if insane > notinsane and insane > fake:
-			maxi = 'insane'
-		elif fake > notinsane and fake > insane:
+		if popular > unpopular and popular > hate:
+			maxi = 'popular'
+		elif hate > unpopular and hate > popular:
 			maxi = 'fake'
-		elif notinsane > insane and notinsane > fake:
-			maxi = 'not insane'
+		elif unpopular > popular and unpopular > hate:
+			maxi = 'unpopular'
 		else:
-			maxi = 'insane'
+			maxi = 'popular'
 
-		#if maxi == 'insane':
-			#self.report_submission(submission, "Submission deemed 'insane' through voting. Please flair it properly.")
-		if maxi == 'not insane':
-			self.report_submission(submission, "Submission deemed 'not insane' through voting.")
-		elif maxi == 'fake':
+		#if maxi == 'popular':
+			#self.report_submission(submission, "Submission deemed 'popular' through voting. Please flair it properly.")
+		if maxi == 'unpopular':
+			self.report_submission(submission, "Submission deemed 'unpopular' through voting.")
+		elif maxi == 'hate':
 			self.removed_flair(submission)
 			self.report_submission(submission, 'Please review this submission. It was removed because it was deemed fake through the voting system.')
 			self.remove_submission(submission)
@@ -402,15 +402,15 @@ class bot:
 					if time.time() - comment.created_utc > 60*60*config.maxtime:
 						self.remove_from_db(comment.id)
 
-						insane = sum(value == 'insane' for value in votes.values())
-						notinsane = sum(value == 'not insane' for value in votes.values())
-						fake = sum(value == 'fake' for value in votes.values())
-						total = insane + notinsane + fake
+						popularr = sum(value == 'popular' for value in votes.values())
+						unpopular = sum(value == 'unpopular' for value in votes.values())
+						hate = sum(value == 'hate' for value in votes.values())
+						total = popular + unpopular + hate
 
-						self.last_update_comment(str(comment.id), str(insane), str(notinsane), str(fake), str(explan))
+						self.last_update_comment(str(comment.id), str(popular), str(unpopular), str(hate), str(explan))
 						self.lock_comment(str(comment.id))
 
-						self.act_on_votes(str(insane), str(notinsane), str(fake), comment.submission.id)
+						self.act_on_votes(str(popular), str(unpopular), str(hate), comment.submission.id)
 					else:
 						comment.reply_sort = 'new'
 						comment = comment.refresh()
@@ -439,11 +439,11 @@ class bot:
 
 						self.update_in_db(str(comment.id), votes)
 
-						insane = sum(value == 'insane' for value in votes.values())
-						notinsane = sum(value == 'not insane' for value in votes.values())
-						fake = sum(value == 'fake' for value in votes.values())
+						popular = sum(value == 'popular' for value in votes.values())
+						unpopular = sum(value == 'unpopular' for value in votes.values())
+						hate = sum(value == 'hate' for value in votes.values())
 
-						self.update_comment(str(comment.id), str(insane), str(notinsane), str(fake), str(explan))
+						self.update_comment(str(comment.id), str(popular), str(unpopular), str(hate), str(explan))
 
 				minute = datetime.datetime.now().minute
 		
@@ -550,11 +550,11 @@ class bot:
 
 									self.update_in_db(str(bot_cm), votes)
 
-									insane = sum(value == 'insane' for value in votes.values())
-									notinsane = sum(value == 'not insane' for value in votes.values())
-									fake = sum(value == 'fake' for value in votes.values())
+									popular = sum(value == 'popular' for value in votes.values())
+									unpopular = sum(value == 'unpopular' for value in votes.values())
+									hate = sum(value == 'hate' for value in votes.values())
 
-									self.update_comment(str(comment.id), str(insane), str(notinsane), str(fake), str(explan))
+									self.update_comment(str(comment.id), str(popular), str(unpopular), str(hate), str(explan))
 								else:
 									comment.reply('Could not sticky explanation. Apologies for the inconvenience.' + config.footer)
 
