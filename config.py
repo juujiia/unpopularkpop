@@ -4,7 +4,7 @@ username = 'unpopularkpop_mod'
 password = 'unpopularkpop2019'
 user_agent = 'unpopularkpop_mod' # user agent
 
-sub = 'unpopularkpopopinions' 
+sub = 'r/unpopularkpopopinions' 
 
 initial_comment = "Is this a **Popular** or **Unpopular** opinion or just **Hate**? \n Please reply to this comment with either 'popular' or 'unpopular' or 'hate'. If you reply **anywhere else** in the thread, your vote will **not** be counted."
 final_comment = "Voting has concluded. \n This vote was deemed; "
