@@ -11,4 +11,4 @@ final_comment = "Voting has concluded. \n This vote was deemed; "
 footer = "\n\n\n\n\n\n^I ^am ^a ^bot ^for ^r/unpopularkpopopinions. ^Please ^send ^me ^a ^message ^if ^you ^have ^any ^feedback ^or ^if ^I ^misbehave."
 removal_type = 'public' # One of ‘public’, ‘private’, ‘private_exposed’. ‘public’ leaves a stickied comment on the post. ‘private’ sends a Modmail message with hidden username. ‘private_exposed’ sends a Modmail message without hidden username
 
-maxtime = 12 # max number of hours the voting is open
+maxtime = 6 # max number of hours the voting is open
